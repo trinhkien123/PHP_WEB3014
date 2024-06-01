@@ -18,6 +18,7 @@ use Admin\PhpWeb3014\Controllers\Client\ContactController;
 use Admin\PhpWeb3014\Controllers\Client\HomeComtroller;
 use Admin\PhpWeb3014\Controllers\Client\ProductController;
 
+echo "<pre>";
 $router->get('/',               HomeComtroller::class    . '@index');
 $router->get('/about',          AboutController::class   . '@index');
 $router->get('/contact',        ContactController::class . '@index');
