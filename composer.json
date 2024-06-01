@@ -1,0 +1,15 @@
+{
+    "name": "admin/php_web3014",
+    "autoload": {
+        "psr-4": {
+            "Admin\\PhpWeb3014\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "trinhkien123",
+            "email": "kien02082004@gmail.com"
+        }
+    ],
+    "require": {}
+}
