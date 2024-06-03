@@ -1,21 +1,24 @@
 {
-    "name": "admin/php_web3014",
-    "autoload": {
-        "psr-4": {
-            "Admin\\PhpWeb3014\\": "src/"
-        }
+  "name": "admin/php_web3014",
+  "autoload": {
+    "psr-4": {
+      "Admin\\PhpWeb3014\\": "src/"
     },
-    "authors": [
-        {
-            "name": "trinhkien123",
-            "email": "kien02082004@gmail.com"
-        }
-    ],
-    "require": {
-        "bramus/router": "~1.6",
-        "eftec/bladeone": "^4.13",
-        "doctrine/dbal": "^4.0",
-        "rakit/validation": "^1.4",
-        "vlucas/phpdotenv": "^5.6"
+    "files": [
+      "helper.php"
+    ]
+  },
+  "authors": [
+    {
+      "name": "trinhkien123",
+      "email": "kien02082004@gmail.com"
     }
+  ],
+  "require": {
+    "bramus/router": "~1.6",
+    "eftec/bladeone": "^4.13",
+    "doctrine/dbal": "^4.0",
+    "rakit/validation": "^1.4",
+    "vlucas/phpdotenv": "^5.6"
+  }
 }

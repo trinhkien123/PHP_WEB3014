@@ -17,9 +17,9 @@ $router->mount('/admin', function () use ($router) {
     //CRUD USER
     $router->get('/users',             UserController::class . '@index');
     $router->get('/users/create',      UserController::class . '@create');
-    $router->get('/store',             UserController::class . '@store');
+    $router->post('/store',             UserController::class . '@store');
     $router->get('/users/{id}',        UserController::class . '@show');
     $router->get('/users/{id}/edit',   UserController::class . '@edit');
-    $router->get('/users/{id}',        UserController::class . '@update');
-    $router->get('/users/{id}',        UserController::class . '@delete');
+    $router->put('/users/{id}',        UserController::class . '@update');
+    $router->post('/users/{id}/delete',        UserController::class . '@delete');
 });
