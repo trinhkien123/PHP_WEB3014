@@ -12,7 +12,7 @@ class HomeComtroller extends Controller
     {
         
         $user = new User();
-        Helper::debug($user);
+        // Helper::debug($user);
 
         
         $name = "KIEN";

@@ -39,19 +39,23 @@ class Model
         return $this->queryBuilder
             ->select("COUNT(*) as $this->tableName")
             ->from($this->tableName)
-            ->fetchAllAssociative();
+            ->fetchOne();
     }
 
     public function paginate($page = 1, $perPage = 10)
     {
         $offset = $perPage * ($page - 1);
-        return $this->queryBuilder
+        $data = $this->queryBuilder
             ->select('*')
             ->from($this->tableName)
             ->setFirstResult($offset)
             ->setMaxResults($perPage)
             ->fetchAllAssociative();
+        $totalPage = ceil($this->count() / $perPage);
+        return [$data, $totalPage];
     }
+
+
 
     public function finByID($id)
     {

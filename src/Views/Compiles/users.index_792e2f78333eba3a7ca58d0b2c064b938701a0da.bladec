@@ -1,0 +1,64 @@
+<?php $_shouldextend[1]=1; ?>
+
+<?php $this->startSection('title'); ?>
+ Quản lý Người dùng
+<?php $this->stopSection(); ?>
+
+<?php $this->startSection('content'); ?>
+ <?php if(isset($_SESSION['status']) && $_SESSION['status']): ?>
+ <div class="alert alert-success"><?php echo \htmlentities($_SESSION['msg']??'', ENT_QUOTES, 'UTF-8', false); ?></div>
+
+ <?php 
+ unset($_SESSION['status']);
+ unset($_SESSION['msg']);
+ ?>
+ <?php endif; ?>
+
+ <?php if(isset($_SESSION['status']) && !$_SESSION['status']): ?>
+ <div class="alert alert-warning"><?php echo \htmlentities($_SESSION['msg']??'', ENT_QUOTES, 'UTF-8', false); ?></div>
+
+ <?php 
+ unset($_SESSION['status']);
+ unset($_SESSION['msg']);
+ ?>
+ <?php endif; ?>
+ <a href="<?php echo \htmlentities(url("admin/user/create")??'', ENT_QUOTES, 'UTF-8', false); ?> "class="btn btn-primary">them moi</a>
+
+ <table class="table table-striped">
+ <thead>
+ <tr>
+ <th>ID</th>
+ <th>NAME</th>
+ <th>AVATAR</th>
+ <th>EMAIL</th>
+ <th>CREATED AT</th>
+ <th>UPDATED AT</th>
+ <th>ACTION</th>
+ </tr>
+ </thead>
+ <tbody>
+
+ <?php $__currentLoopData = $users; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $user): $loop = $this->incrementLoopIndices();  ?>
+ <tr>
+ <td><?php echo \htmlentities($user['id']??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($user['name']??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td>
+ <img src="<?php echo \htmlentities(show_upload($user['avatar'])??'', ENT_QUOTES, 'UTF-8', false); ?>" width="100px" alt="">
+ </td>
+ <td><?php echo \htmlentities($user['email']??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($user['created_at']??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($user['updated_at']??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td>
+ <a href="<?php echo \htmlentities(url("/admin/users/{$user['id']}/show")??'', ENT_QUOTES, 'UTF-8', false); ?>" class="btn btn-info">Xem</a>
+ <a href="<?php echo \htmlentities(url("/admin/users/{$user['id']}/delete")??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ onclick="return confirm('Chắc chắn xóa không?');" class="btn btn-danger">Xóa</a>
+ </td>
+ </tr>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+
+ </tbody>
+ </table>
+<?php $this->stopSection(); ?>
+
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('layouts.master'); } ?>
